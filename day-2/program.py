@@ -43,7 +43,7 @@ file.close()
 
 ###SOLUTION TO PART 2###
 ###Most of the logic here is copied from solution 1
-"""
+
 file = open("text.txt")
 good_password_count = 0
 
@@ -59,11 +59,18 @@ for x in file:
     pw_string = pw_info[2]
     
     ###Because their fictional password system is not zero-indexed we subtract one from each position
-    if pw_string[first_pos - 1] == pw_char and pw_string[second_pos - 1] != pw_char:
+    ###This method uses a XOR operator which is pretty neat, I'd say
+    if (pw_string[first_pos - 1] == pw_char) ^ (pw_string[second_pos - 1] == pw_char):
         good_password_count += 1
-    if pw_string[second_pos -1] == pw_char and pw_string[first_pos - 1] != pw_char:
-        good_password_count += 1
+  
+    ###Method without XOR 
+    # if pw_string[first_pos - 1] == pw_char and pw_string[second_pos - 1] != pw_char:
+        # good_password_count += 1
+    
+    # if pw_string[second_pos - 1] == pw_char and pw_string[first_pos - 1] != pw_char:
+        # good_password_count += 1 
 
 print(good_password_count)
 file.close()
-"""
+
+
